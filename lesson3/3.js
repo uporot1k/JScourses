@@ -1,6 +1,7 @@
 let money,
 	name,
-	time
+	time,
+	price
 function start(){
 	money = prompt('Ваш бюджет на месяц?');
 
@@ -11,15 +12,16 @@ function start(){
 	name = prompt('Название вашего магазина?').toUpperCase();
 	time = 21;
 }
-start();
+//start();
 
 
 var mainList = {
 	moneySum: money,
 	nameMain: name,
 	shopGoods : [],
-	employers:{},
-	open: true
+	employers : [],
+	open: true,
+	discount: false
 }
 
 function chooseGoods(){
@@ -57,6 +59,21 @@ console.log(mainList.shopGoods[1]);
 console.log(mainList.shopGoods[0]);
 console.log(mainList);
 console.log(typeof(mainList.shopGoods));
-var oneDay = +money/30;
+var oneDay = calcMoney(money);
 
+function calcMoney(money){
+	return +money/30;
+}
+function makeDiscount(discount, price ){
+	if (discount==true) 
+		return price*0.2
+	else return price;
+}
+function recruiting(num){
+	return num + "-" + prompt("Введите имя работника")
+}
+for (let i = 0;i<4;i++){
+	mainList.employers[i] = recruiting(i+1);
+	console.log(mainList.employers[i])
+}
 alert('Ваш бюджет на день: ' + oneDay + 'руб');
