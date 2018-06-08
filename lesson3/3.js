@@ -12,7 +12,7 @@ function start(){
 	name = prompt('Название вашего магазина?').toUpperCase();
 	time = 21;
 }
-//start();
+start();
 
 
 var mainList = {
