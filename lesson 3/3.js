@@ -2,6 +2,15 @@ let money,
 	name,
 	time,
 	price
+
+var mainList = {
+	moneySum: money,
+	nameMain: name,
+	shopGoods : [],
+	employers:{},
+	open: true,
+	discount: false
+}	
 function start(){
 	money = prompt('Ваш бюджет на месяц?');
 
@@ -14,15 +23,20 @@ function start(){
 }
 start();
 
-
-var mainList = {
-	moneySum: money,
-	nameMain: name,
-	shopGoods : [],
-	employers : [],
-	open: true,
-	discount: false
+function askDiscount(){
+	let ask = confirm("Хотите подключить дисконтную систему?");
+	if(ask==true){
+		mainList.discount = true;
+		makeDiscount();
+	}
 }
+function makeDiscount(price){
+	return price * 0.2
+}
+askDiscount();
+
+
+
 
 function chooseGoods(){
 	for (var i = 0; i < 5; i++) {
@@ -53,27 +67,20 @@ function workTime(time){
 
 workTime(time);
 
+function calcMoney(){
+	let oneDay = +money/30;
+	alert('Ваш бюджет на день: ' + oneDay + 'руб');
+}
+calcMoney();
+
+for( let i = 0; i < 4; i++ ) {
+	let nameWorker = prompt('Введите имя сотрудника');
+	mainList.employers[i] =nameWorker;
+	
+}
 
 
 console.log(mainList.shopGoods[1]);
 console.log(mainList.shopGoods[0]);
 console.log(mainList);
 console.log(typeof(mainList.shopGoods));
-var oneDay = calcMoney(money);
-
-function calcMoney(money){
-	return +money/30;
-}
-function makeDiscount(discount, price ){
-	if (discount==true) 
-		return price*0.2
-	else return price;
-}
-function recruiting(num){
-	return num + "-" + prompt("Введите имя работника")
-}
-for (let i = 0;i<4;i++){
-	mainList.employers[i] = recruiting(i+1);
-	console.log(mainList.employers[i])
-}
-alert('Ваш бюджет на день: ' + oneDay + 'руб');
