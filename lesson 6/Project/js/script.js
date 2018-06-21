@@ -90,8 +90,26 @@ timeValue.addEventListener('change', () => {
 });
 
 budgetBtn.addEventListener('click', () => {
-	
+	countBudget.value = +money/30; 
 });
+
+employersBtn.addEventListener('click', () => {
+	for( let i = 0; i < hireEmployersItem.length; i++ ) {
+			let nameWorker = hireEmployersItem[i].value;
+			mainList.employers[i] =nameWorker;
+			employersValue.textContent += mainList.employers[i] + ', ';
+			
+		}
+});
+
+isopenValue.addEventListener('change',()=>{
+	if(isopenValue.style.backgroundColor === 'green'){
+		console.log(1);
+	}else{
+		console.log(2);
+	}
+});
+
 
 
 
@@ -125,11 +143,7 @@ var mainList = {
 		alert('Ваш бюджет на день: ' + oneDay + 'руб');
 	},
 	hireEmployers: function hireEmployers(){
-		for( let i = 1; i < 4; i++ ) {
-			let nameWorker = prompt('Введите имя сотрудника');
-			mainList.employers[i] =nameWorker;
-			
-		}
+		
 	},
 	chooseShopItems: function chooseShopItems(){
 		
